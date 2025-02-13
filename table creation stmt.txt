@@ -1,0 +1,115 @@
+CREATE TABLE zoho_reports.credit_note_details(
+	id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    credit_note_id VARCHAR(50),
+    credit_note_number VARCHAR(50),
+    status VARCHAR(20),
+    credit_date DATE,
+    customer_id VARCHAR(50),
+    customer_name VARCHAR(255),
+    exchange_rate DECIMAL(10, 2),
+    credit_note_amount DECIMAL(15, 2),
+    balance_amount DECIMAL(15, 2),
+    batch_id VARCHAR(45),
+	record_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	record_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE zoho_reports.vendor_credit_details (
+	id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    vendor_credit_id BIGINT ,
+    credit_note VARCHAR(50),
+    status VARCHAR(20),
+    vendor_credit_date DATE,
+    vendor_id BIGINT,
+    vendor_name VARCHAR(100),
+    amount DECIMAL(15, 2),
+    balance_amount DECIMAL(15, 2),
+    currency_code VARCHAR(10),
+    batch_id VARCHAR(45),
+	record_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,	
+	record_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+ CREATE TABLE zoho_reports.ar_aging_details (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    entity_id BIGINT,
+    date DATE,
+    amount DECIMAL(15, 2),
+    exchange_rate DECIMAL(10, 4),
+    reminders_sent INT,
+    currency_code VARCHAR(10),
+    balance_due DECIMAL(15, 2),
+    transaction_number VARCHAR(255),
+    customer_name VARCHAR(255),
+    customer_id BIGINT,
+    type VARCHAR(50),
+    age INT,
+    status VARCHAR(50),
+    batch_id VARCHAR(45),
+    record_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    record_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+ );
+
+
+ CREATE TABLE zoho_reports.ap_aging_details (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    ap_aging_id BIGINT,
+    date DATE,
+    bill_amount DECIMAL(15, 2),
+    balance_due DECIMAL(15, 2),
+    transaction_number VARCHAR(255),
+    vendor_id BIGINT,
+    vendor_name VARCHAR(255),
+    currency_code VARCHAR(10),
+    currency_id BIGINT,
+    type VARCHAR(50),
+    age INT,
+    status VARCHAR(50),
+    batch_id VARCHAR(45),
+    DUE_date DATE,
+    record_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    record_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+ );
+
+
+ CREATE TABLE zoho_reports.general_ledger_groups (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    group_id BIGINT,
+    opening_debit DECIMAL(15, 2),
+    opening_credit DECIMAL(15, 2),
+    opening_date DATE,
+    closing_debit DECIMAL(15, 2),
+    closing_credit DECIMAL(15, 2),
+    closing_date DATE,
+    batch_id VARCHAR(45),
+    record_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    record_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+ );
+
+
+ CREATE TABLE zoho_reports.general_ledger_details (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    date DATE,
+    account VARCHAR(255),
+    transaction_details VARCHAR(255),
+    transaction_id BIGINT,
+    offset_account_id VARCHAR(255),
+    offset_account_type VARCHAR(255),
+    transaction_type VARCHAR(50),
+    reference_number VARCHAR(255),
+    transaction_number VARCHAR(255),
+    debit DECIMAL(15, 2),
+    credit DECIMAL(15, 2),
+    account_id BIGINT,
+    currency_code VARCHAR(10),
+    group_id BIGINT,
+    branch_name VARCHAR(255),
+    account_group VARCHAR(50),
+    amount DECIMAL(15, 2),
+    currency VARCHAR(10),
+    batch_id VARCHAR(45),
+    record_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    record_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+ );
